@@ -12,7 +12,6 @@ var totalPioneerShop = 0;
 var pioneerShopCookiePerHourArray = [];
 
 var pioneerShop = {
-   locat: 'Pioneer Square',
    minCust: 17,
    maxCust: 88,
    avgCookiePerCust: 5.2,
@@ -58,7 +57,6 @@ var totalAirportShop = 0;
 var airportShopCookiePerHourArray = [];
 
 var airportShop = {
-   locat: 'Portland Airport',
    minCust: 6,
    maxCust: 24,
    avgCookiePerCust: 1.2,
@@ -104,7 +102,6 @@ var totalWashingtonShop = 0;
 var washingtonShopCookiePerHourArray = [];
 
 var washingtonShop = {
-   locat: 'Washington Square',
    minCust: 11,
    maxCust: 38,
    avgCookiePerCust: 1.9,
@@ -150,7 +147,6 @@ var totalSellwoodShop = 0;
 var sellwoodShopCookiePerHourArray = [];
 
 var sellwoodShop = {
-   locat: 'Sellwood',
    minCust: 20,
    maxCust: 48,
    avgCookiePerCust: 3.3,
@@ -196,7 +192,6 @@ var totalPearlShop = 0;
 var pearlShopCookiePerHourArray = [];
 
 var pearlShop = {
-   locat: 'Pearl District',
    minCust: 3,
    maxCust: 24,
    avgCookiePerCust: 2.6,
