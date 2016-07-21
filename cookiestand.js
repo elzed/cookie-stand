@@ -1,6 +1,22 @@
 var hoursToCalculate = 8;     // sets the length of day at all stores
 var openingHour = 10;         // sets the hour of opening at all stores
+var civilianTime;             // to keep time on a 12-hour clock
 var meridiem;                 // initializes am and pm string variable
+
+
+// count time on a 12-hour clock and add 'am' or 'pm' as appropriate
+function getTimes() {
+   if (i + openingHour < 12) {
+      meridiem = 'am: ';
+      civilianTime = i + openingHour;
+   } else if (i + openingHour > 12) {
+      meridiem = 'pm: ';
+      civilianTime = i + openingHour - 12;
+   } else {
+      meridiem = 'pm: ';
+      civilianTime = i + openingHour;
+   }
+}
 
 
 
@@ -25,23 +41,8 @@ var pioneerShop = {
 
 for (var i = 0; i < hoursToCalculate; i++) {
    pioneerShopCookiePerHourArray.push(pioneerShop.cookiePerHour());
-   console.log(pioneerShopCookiePerHourArray[i]);
-
-   // add 'pm' or 'am' depending on time of day
-   if (i + openingHour >= 12) {
-      meridiem = 'pm: ';
-   } else {
-      meridiem = 'am: ';
-   }
-
-   // begin time of day based on openHour variable and reset to 1 after 12 noon
-   if (i + openingHour <= 12) {
-      civilianTime = i + openingHour;
-   } else {
-      civilianTime = i + openingHour - 12;
-   }
-
    var el = document.getElementById('psListItem');
+   getTimes();
    el.innerHTML += '<li>' + (civilianTime) + meridiem + pioneerShopCookiePerHourArray[i] + '</li>';
    totalPioneerShop += pioneerShopCookiePerHourArray[i];
 }
@@ -70,23 +71,8 @@ var airportShop = {
 
 for (var i = 0; i < hoursToCalculate; i++) {
    airportShopCookiePerHourArray.push(airportShop.cookiePerHour());
-   console.log(airportShopCookiePerHourArray[i]);
-
-   // add 'pm' or 'am' depending on time of day
-   if (i + openingHour >= 12) {
-      meridiem = 'pm: ';
-   } else {
-      meridiem = 'am: ';
-   }
-
-   // begin time of day based on openHour variable and reset to 1 after 12 noon
-   if (i + openingHour <= 12) {
-      civilianTime = i + openingHour;
-   } else {
-      civilianTime = i + openingHour - 12;
-   }
-
    var el = document.getElementById('paListItem');
+   getTimes();
    el.innerHTML += '<li>' + (civilianTime) + meridiem + airportShopCookiePerHourArray[i] + '</li>';
    totalAirportShop += airportShopCookiePerHourArray[i];
 }
@@ -115,23 +101,8 @@ var washingtonShop = {
 
 for (var i = 0; i < hoursToCalculate; i++) {
    washingtonShopCookiePerHourArray.push(washingtonShop.cookiePerHour());
-   console.log(washingtonShopCookiePerHourArray[i]);
-
-   // add 'pm' or 'am' depending on time of day
-   if (i + openingHour >= 12) {
-      meridiem = 'pm: ';
-   } else {
-      meridiem = 'am: ';
-   }
-
-   // begin time of day based on openHour variable and reset to 1 after 12 noon
-   if (i + openingHour <= 12) {
-      civilianTime = i + openingHour;
-   } else {
-      civilianTime = i + openingHour - 12;
-   }
-
    var el = document.getElementById('wsListItem');
+   getTimes();
    el.innerHTML += '<li>' + (civilianTime) + meridiem + washingtonShopCookiePerHourArray[i] + '</li>';
    totalWashingtonShop += washingtonShopCookiePerHourArray[i];
 }
@@ -160,23 +131,8 @@ var sellwoodShop = {
 
 for (var i = 0; i < hoursToCalculate; i++) {
    sellwoodShopCookiePerHourArray.push(sellwoodShop.cookiePerHour());
-   console.log(sellwoodShopCookiePerHourArray[i]);
-
-   // add 'pm' or 'am' depending on time of day
-   if (i + openingHour >= 12) {
-      meridiem = 'pm: ';
-   } else {
-      meridiem = 'am: ';
-   }
-
-   // begin time of day based on openHour variable and reset to 1 after 12 noon
-   if (i + openingHour <= 12) {
-      civilianTime = i + openingHour;
-   } else {
-      civilianTime = i + openingHour - 12;
-   }
-
    var el = document.getElementById('swListItem');
+   getTimes();
    el.innerHTML += '<li>' + (civilianTime) + meridiem + sellwoodShopCookiePerHourArray[i] + '</li>';
    totalSellwoodShop += sellwoodShopCookiePerHourArray[i];
 }
@@ -205,23 +161,8 @@ var pearlShop = {
 
 for (var i = 0; i < hoursToCalculate; i++) {
    pearlShopCookiePerHourArray.push(pearlShop.cookiePerHour());
-   console.log(pearlShopCookiePerHourArray[i]);
-
-   // add 'pm' or 'am' depending on time of day
-   if (i + openingHour >= 12) {
-      meridiem = 'pm: ';
-   } else {
-      meridiem = 'am: ';
-   }
-
-   // begin time of day based on openHour variable and reset to 1 after 12 noon
-   if (i + openingHour <= 12) {
-      civilianTime = i + openingHour;
-   } else {
-      civilianTime = i + openingHour - 12;
-   }
-
    var el = document.getElementById('pdListItem');
+   getTimes();
    el.innerHTML += '<li>' + (civilianTime) + meridiem + pearlShopCookiePerHourArray[i] + '</li>';
    totalPearlShop += pearlShopCookiePerHourArray[i];
 }
