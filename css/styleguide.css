@@ -1,0 +1,55 @@
+div {
+  margin: 30px 0;
+}
+
+h1.logo {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: #FF8C69; /* salmon color */
+}
+
+h1, h2, h3 {
+  font-family: 'Slabo 27px', serif;
+  color: #E1B378;
+}
+
+p {
+  margin: 0;
+}
+
+p.bodycopy {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+div.colorswatch {
+  display: inline-block;
+  width: 15%;
+  height: 80px;
+}
+
+div#como {
+  background-color: #4D8963;
+}
+
+div#aquaforest {
+  background-color: #69A583;
+}
+
+div#harvestgold {
+  background-color: #E1B378;
+}
+
+div#brandy {
+  background-color: #E0CC97;
+}
+
+div#carissma {
+  background-color: #EC799A;
+}
+
+div#eggplant {
+  background-color: #9F0251;
+}
