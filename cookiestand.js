@@ -39,20 +39,26 @@ var pioneerShop = {
    }
 };
 
+var buildLocation     = document.getElementById('main-nav');
+var locationTextNode  = document.createTextNode('Pioneer Square');
+var headingItemNode   = document.createElement('h2');
+headingItemNode.appendChild(locationTextNode);
+buildLocation.appendChild(headingItemNode);
+
 for (var i = 0; i < hoursToCalculate; i++) {
-   pioneerShopCookiePerHourArray.push(pioneerShop.cookiePerHour());
-   var el = document.getElementById('psListItem');
-   getTimes();
-   el.innerHTML += '<li>' + (civilianTime) + meridiem + pioneerShopCookiePerHourArray[i] + '</li>';
-   totalPioneerShop += pioneerShopCookiePerHourArray[i];
+  pioneerShopCookiePerHourArray.push(pioneerShop.cookiePerHour());
+  getTimes();
+  var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + pioneerShopCookiePerHourArray[i]);
+  var listItemNode = document.createElement('li');
+  listItemNode.appendChild(timeAndCookieCount);
+  buildLocation.appendChild(listItemNode);
+  totalPioneerShop += pioneerShopCookiePerHourArray[i];
 }
-el.innerHTML += '<li>Total: ' + totalPioneerShop + '</li>';
 
-
-
-
-
-
+var totalCookies = document.createTextNode('Total: ' + totalPioneerShop);
+var listItemNode = document.createElement('li');
+listItemNode.appendChild(totalCookies);
+buildLocation.appendChild(listItemNode);
 
 
 
@@ -75,14 +81,26 @@ var airportShop = {
    }
 };
 
+var buildLocation     = document.getElementById('main-nav');
+var locationTextNode  = document.createTextNode('Portland Airport');
+var headingItemNode   = document.createElement('h2');
+headingItemNode.appendChild(locationTextNode);
+buildLocation.appendChild(headingItemNode);
+
 for (var i = 0; i < hoursToCalculate; i++) {
-   airportShopCookiePerHourArray.push(airportShop.cookiePerHour());
-   var el = document.getElementById('paListItem');
-   getTimes();
-   el.innerHTML += '<li>' + (civilianTime) + meridiem + airportShopCookiePerHourArray[i] + '</li>';
-   totalAirportShop += airportShopCookiePerHourArray[i];
+  airportShopCookiePerHourArray.push(airportShop.cookiePerHour());
+  getTimes();
+  var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + airportShopCookiePerHourArray[i]);
+  var listItemNode = document.createElement('li');
+  listItemNode.appendChild(timeAndCookieCount);
+  buildLocation.appendChild(listItemNode);
+  totalAirportShop += airportShopCookiePerHourArray[i];
 }
-el.innerHTML += '<li>Total: ' + totalAirportShop + '</li>';
+
+var totalCookies = document.createTextNode('Total: ' + totalAirportShop);
+var listItemNode = document.createElement('li');
+listItemNode.appendChild(totalCookies);
+buildLocation.appendChild(listItemNode);
 
 
 
@@ -105,14 +123,26 @@ var washingtonShop = {
    }
 };
 
+var buildLocation     = document.getElementById('main-nav');
+var locationTextNode  = document.createTextNode('Washington Square');
+var headingItemNode   = document.createElement('h2');
+headingItemNode.appendChild(locationTextNode);
+buildLocation.appendChild(headingItemNode);
+
 for (var i = 0; i < hoursToCalculate; i++) {
-   washingtonShopCookiePerHourArray.push(washingtonShop.cookiePerHour());
-   var el = document.getElementById('wsListItem');
-   getTimes();
-   el.innerHTML += '<li>' + (civilianTime) + meridiem + washingtonShopCookiePerHourArray[i] + '</li>';
-   totalWashingtonShop += washingtonShopCookiePerHourArray[i];
+  washingtonShopCookiePerHourArray.push(washingtonShop.cookiePerHour());
+  getTimes();
+  var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + washingtonShopCookiePerHourArray[i]);
+  var listItemNode = document.createElement('li');
+  listItemNode.appendChild(timeAndCookieCount);
+  buildLocation.appendChild(listItemNode);
+  totalWashingtonShop += washingtonShopCookiePerHourArray[i];
 }
-el.innerHTML += '<li>Total: ' + totalWashingtonShop + '</li>';
+
+var totalCookies = document.createTextNode('Total: ' + totalWashingtonShop);
+var listItemNode = document.createElement('li');
+listItemNode.appendChild(totalCookies);
+buildLocation.appendChild(listItemNode);
 
 
 
@@ -135,14 +165,26 @@ var sellwoodShop = {
    }
 };
 
+var buildLocation     = document.getElementById('main-nav');
+var locationTextNode  = document.createTextNode('Sellwood');
+var headingItemNode   = document.createElement('h2');
+headingItemNode.appendChild(locationTextNode);
+buildLocation.appendChild(headingItemNode);
+
 for (var i = 0; i < hoursToCalculate; i++) {
-   sellwoodShopCookiePerHourArray.push(sellwoodShop.cookiePerHour());
-   var el = document.getElementById('swListItem');
-   getTimes();
-   el.innerHTML += '<li>' + (civilianTime) + meridiem + sellwoodShopCookiePerHourArray[i] + '</li>';
-   totalSellwoodShop += sellwoodShopCookiePerHourArray[i];
+  sellwoodShopCookiePerHourArray.push(sellwoodShop.cookiePerHour());
+  getTimes();
+  var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + sellwoodShopCookiePerHourArray[i]);
+  var listItemNode = document.createElement('li');
+  listItemNode.appendChild(timeAndCookieCount);
+  buildLocation.appendChild(listItemNode);
+  totalSellwoodShop += sellwoodShopCookiePerHourArray[i];
 }
-el.innerHTML += '<li>Total: ' + totalSellwoodShop + '</li>';
+
+var totalCookies = document.createTextNode('Total: ' + totalSellwoodShop);
+var listItemNode = document.createElement('li');
+listItemNode.appendChild(totalCookies);
+buildLocation.appendChild(listItemNode);
 
 
 
@@ -165,18 +207,26 @@ var pearlShop = {
    }
 };
 
+var buildLocation     = document.getElementById('main-nav');
+var locationTextNode  = document.createTextNode('Pearl District');
+var headingItemNode   = document.createElement('h2');
+headingItemNode.appendChild(locationTextNode);
+buildLocation.appendChild(headingItemNode);
+
 for (var i = 0; i < hoursToCalculate; i++) {
-   pearlShopCookiePerHourArray.push(pearlShop.cookiePerHour());
-   var el = document.getElementById('pdListItem');
-   getTimes();
-   el.innerHTML += '<li>' + (civilianTime) + meridiem + pearlShopCookiePerHourArray[i] + '</li>';
-   totalPearlShop += pearlShopCookiePerHourArray[i];
+  pearlShopCookiePerHourArray.push(pearlShop.cookiePerHour());
+  getTimes();
+  var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + pearlShopCookiePerHourArray[i]);
+  var listItemNode = document.createElement('li');
+  listItemNode.appendChild(timeAndCookieCount);
+  buildLocation.appendChild(listItemNode);
+  totalPearlShop += pearlShopCookiePerHourArray[i];
 }
-el.innerHTML += '<li>Total: ' + totalPearlShop + '</li>';
 
-
-
-
+var totalCookies = document.createTextNode('Total: ' + totalPearlShop);
+var listItemNode = document.createElement('li');
+listItemNode.appendChild(totalCookies);
+buildLocation.appendChild(listItemNode);
 
 
 
