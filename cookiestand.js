@@ -1,10 +1,20 @@
+/***********************************************
+************************ Variable initialization
+***********************************************/
+
 var hoursToCalculate = 8;     // sets the length of day at all stores
 var openingHour = 10;         // sets the hour of opening at all stores
 var civilianTime;             // to keep time on a 12-hour clock
 var meridiem;                 // initializes am and pm string variable
 var totalSoldPerShop;         // declares variable for use within object contstructor
 
-// Count time on a 12-hour clock and add 'am' or 'pm' as appropriate
+
+
+/***********************************************
+**************** Functions & Object Constructors
+***********************************************/
+
+// Function to count time on a 12-hour clock and add 'am' or 'pm' as appropriate
 function getTimes() {
    if (i + openingHour < 12) {
       meridiem = 'am';
@@ -42,15 +52,20 @@ var Shop = function(shopName, minCust, maxCust, avgCookiePerCust) {
       cookieCell.innerText = cookiePerHourNumber;       // sticks the rnd# in <td> element
       shopRow.appendChild(cookieCell);                  // <td> with rnd# appended to the table row <tr>
       totalSoldPerShop += cookiePerHourNumber;          // store total is incremented
-    };
+    }
     cookieCell = document.createElement("td");          // cookieCell cleared to hold just <td> element again
     cookieCell.innerText = totalSoldPerShop;            // sticks the store total in <td> element
     shopRow.appendChild(cookieCell);                    // <td> with store total appended to the table row <tr>
     var table = document.getElementById("shops");       // variable table holds reference to HTML <table>
     table.appendChild(shopRow);                         // table row <tr> with all <td>'s appended to HTML <table>
-  }  // closes the addCookiesPerHour function
+  };
 }
 
+
+
+/***********************************************
+***************************************** Arrays
+***********************************************/
 
 var shops = [
   new Shop("Pioneer Square", 17, 88, 5.2),
@@ -61,6 +76,11 @@ var shops = [
 ];
 
 
+
+/***********************************************
+*************************** Create Table via DOM
+***********************************************/
+
 // Add table header "Cookie Stand Locations"
 var table = document.getElementById("shops");
 var tableHeader = document.createElement("tr");
@@ -70,37 +90,36 @@ tableHeaderCell.innerText = "Cookie Stand Locations";
 tableHeader.appendChild(tableHeaderCell);
 table.appendChild(tableHeader);
 
-
 // Add column headers
 tableHeader = document.createElement("tr");
-
 tableHeaderCell = document.createElement("th");
 tableHeaderCell.innerText = "Location";
 tableHeader.appendChild(tableHeaderCell);
-
 for (var i = 0; i < hoursToCalculate; i++) {
-  getTimes();  // required function call to get data for civilianTime and meridiem variables
+  getTimes();  // function call to get data for civilianTime and meridiem variables
   tableHeaderCell = document.createElement("th");
   tableHeaderCell.innerText = civilianTime + meridiem;
   tableHeader.appendChild(tableHeaderCell);
 }
-// tableHeaderCell = document.createElement("th");
-// tableHeaderCell.innerText = "E-Mail";
-// tableHeader.appendChild(tableHeaderCell);
-
 tableHeaderCell = document.createElement("th");
 tableHeaderCell.innerText = "Total";
 tableHeader.appendChild(tableHeaderCell);
+table.appendChild(tableHeader);  // append accumulated <th> elements and text to the HTML <table>
 
-table.appendChild(tableHeader);
-
-
-
-// Add cookie counts
+// Add locations and cookie counts
 for (var index = 0; index < shops.length; index++) {
   var cookieShop = shops[index];
   cookieShop.addCookiesPerHour();
 }
+
+
+
+
+
+
+
+
+
 
 
 /***********************************************
