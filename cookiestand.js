@@ -2,7 +2,6 @@ var hoursToCalculate = 8;     // sets the length of day at all stores
 var openingHour = 10;         // sets the hour of opening at all stores
 var civilianTime;             // to keep time on a 12-hour clock
 var meridiem;                 // initializes am and pm string variable
-var shopPerHourArray = [];    // initializes array within object contstructor
 var totalSoldPerShop;         // declares variable for use within object contstructor
 
 // Count time on a 12-hour clock and add 'am' or 'pm' as appropriate
@@ -26,32 +25,43 @@ var Shop = function(shopName, minCust, maxCust, avgCookiePerCust) {
   this.maxCust = maxCust;
   this.avgCookiePerCust = avgCookiePerCust;
   this.rndCustPerHour = function() {
-     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   };
   this.cookiePerHour = function() {
-     return Math.round(this.avgCookiePerCust * this.rndCustPerHour());
+    return Math.round(this.avgCookiePerCust * this.rndCustPerHour());
   };
-  for (var i = 0; i < hoursToCalculate; i++) {
-    // shopPerHourArray.push(this.cookiePerHour());
-    // this.getTimes(); // required function call to get data for civilianTime and meridiem variables
-    console.log("Pioneer Square random cookies per hour: " + this.cookiePerHour());
-    var shopRow = document.createElement("tr");
-    
-    // var timeAndCookieCount = document.createTextNode((civilianTime) + meridiem + shopPerHourArray[i]);
-    // var listItemNode = document.createElement('li');
-    // listItemNode.appendChild(timeAndCookieCount);
-    // buildLocation.appendChild(listItemNode);
-    // totalSoldPerShop += shopPerHourArray[i];
-  };
+  this.addCookiesPerHour = function() {
+    var shopRow = document.createElement("tr");         // shopRow holds <tr> element
+    var totalSoldPerShop = 0;                           // reset total counter to 0 for each store loop
+    for (var index = 0; index < hoursToCalculate; index++) {
+      var cookieCell = document.createElement("td");    // cookieCell holds <td> element
+      var cookiePerHourNumber = this.cookiePerHour();   // cookiePerHourNumber holds random number (rnd#)
+      cookieCell.innerText = cookiePerHourNumber;       // sticks the rnd# in <td> element
+      shopRow.appendChild(cookieCell);                  // <td> with rnd# appended to the table row <tr>
+      totalSoldPerShop += cookiePerHourNumber;          // store total is incremented
+    };
+    // console.log(totalSoldPerShop);
+    cookieCell = document.createElement("td");          // cookieCell cleared to hold just <td> element again
+    cookieCell.innerText = totalSoldPerShop;            // sticks the store total in <td> element
+    shopRow.appendChild(cookieCell);                    // <td> with store total appended to the table row <tr>
+    var table = document.getElementById("shops");       // variable table holds reference to HTML <table>
+    table.appendChild(shopRow);                         // table row <tr> appended to HTML <table>
+  }  // closes the addCookiesPerHour function
 }
 
 
 var shops = [
   new Shop("Pioneer Square", 17, 88, 5.2),
   new Shop("Portland Airport", 6, 24, 1.2),
+  new Shop("Washington Square", 11, 38, 1.9),
+  new Shop("Sellwood", 20, 48, 3.3),
+  new Shop("Pearl District", 3, 24, 2.6),
 ];
 
-// console.log("Pioneer Square random cookies per hour: " + shops[0].cookiePerHour());
+for (var index = 0; index < shops.length; index++) {
+  var cookieShop = shops[index];
+  cookieShop.addCookiesPerHour();
+}
 
 
 /***********************************************
