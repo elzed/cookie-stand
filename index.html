@@ -10,10 +10,35 @@
         <img src="images/salmon.png" alt="salmon">
         <h1>Pat's Salmon Cookies</h1>
       </header>
+
+      <form>
+
+        <fieldset>
+
+          <legend>New Store Entry</legend>
+
+          <label class="label" for="formShopName">Shop Name</label>
+          <input type="text" id="formShopName" name="formShopName"><br>
+
+          <label class="label" for="formMinCust">Minimum customers per hour</label>
+          <input type="text" id="formMinCust" name="formMinCust"><br>
+
+          <label class="label" for="formMaxCust">Maximum customers per hour</label>
+          <input type="text" id="formMaxCust" name="formMaxCust"><br>
+
+          <label class="label" for="formAveCookiePerCust">Average cookies per customer</label>
+          <input type="text" id="formAveCookiePerCust" name="formAveCookiePerCust"><br>
+
+        </fieldset>
+        
+      </form>
+
+
+
       <p id="intro">The following is a randomly generated table of potential cookies required
                     per hour. The numbers are based on the data of minimum and maximum number
                     of customers experienced per store and the average number of cookies each
-                    customer purchases.</p> 
+                    customer purchases.</p>
       <table id="shops">
       </table>
 
