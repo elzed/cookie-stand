@@ -75,6 +75,22 @@ var shops = [
 ];
 
 
+function newStore(form) {
+  var newLocation, newMinimum, newMaximum, newCookieAverage;  // initialize variables for arguments
+  newLocation = form.formShopName.value;
+  newMinimum = form.formMinCust.value;
+  newMaximum = form.formMaxCust.value;
+  newCookieAverage = form.formAveCookiePerCust.value;
+
+  shops.push(new Shop(newLocation, newMinimum, newMaximum, newCookieAverage));
+  renderShops();
+}
+
+
+
+
+
+
 
 /***********************************************
 *************************** Create Table via DOM
@@ -98,7 +114,9 @@ tableHeader.appendChild(tableHeaderCell);
 table.appendChild(tableHeader);  // append accumulated <th> elements and text to the HTML <table>
 
 // Add locations and cookie counts
-for (var index = 0; index < shops.length; index++) {
-  var cookieShop = shops[index];
-  cookieShop.addCookiesPerHour();
+function renderShops() {
+  for (var index = 0; index < shops.length; index++) {
+    var cookieShop = shops[index];
+    cookieShop.addCookiesPerHour();
+  }
 }
