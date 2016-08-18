@@ -75,3 +75,26 @@ p#intro {
   border-radius: 6px;
   text-align: justify;
 }
+
+
+/* FORM */
+
+form {
+  display: inline-block;
+  width: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #555;
+  max-width: 800px;
+  padding: 15px;
+}
+
+form label {
+   margin: 5px 0px 12px 0px;
+   color: #555;
+}
+
+form fieldset {
+   border: 2px solid #E1B378;
+   margin: 15px 0 15px 0;
+   padding: 0px 10px 10px 20px;
+}

@@ -6,26 +6,27 @@ var hoursToCalculate = 8;     // sets the length of day at all stores
 var openingHour = 10;         // sets the hour of opening at all stores
 var civilianTime;             // to keep time on a 12-hour clock
 var meridiem;                 // initializes am and pm string variable
-
+var clearTable;
+var i;
 
 
 /***********************************************
-**************** Functions & Object Constructors
+***************************** Object Constructor
 ***********************************************/
 
 // Function to count time on a 12-hour clock and add 'am' or 'pm' as appropriate
-function getTimes() {
-   if (i + openingHour < 12) {
-      meridiem = 'am';
-      civilianTime = i + openingHour;
-   } else if (i + openingHour > 12) {
-      meridiem = 'pm';
-      civilianTime = i + openingHour - 12;
-   } else {
-      meridiem = 'pm';
-      civilianTime = i + openingHour;
-   }
-}
+// function getTimes() {
+//    if (i + openingHour < 12) {
+//       meridiem = 'am';
+//       civilianTime = i + openingHour;
+//    } else if (i + openingHour > 12) {
+//       meridiem = 'pm';
+//       civilianTime = i + openingHour - 12;
+//    } else {
+//       meridiem = 'pm';
+//       civilianTime = i + openingHour;
+//    }
+// }
 
 // Object contstructor
 var Shop = function(shopName, minCust, maxCust, avgCookiePerCust) {
@@ -76,17 +77,23 @@ var shops = [
 
 
 function newStore(form) {
-  var newLocation, newMinimum, newMaximum, newCookieAverage;  // initialize variables for arguments
+  var newLocation, newMinimum, newMaximum, newCookieAverage;                    // create variables for arguments
   newLocation = form.formShopName.value;
-  newMinimum = form.formMinCust.value;
-  newMaximum = form.formMaxCust.value;
-  newCookieAverage = form.formAveCookiePerCust.value;
+  newMinimum = parseInt(form.formMinCust.value);
+  newMaximum = parseInt(form.formMaxCust.value);
+  newCookieAverage = parseFloat(form.formAveCookiePerCust.value);
+  shops.push(new Shop(newLocation, newMinimum, newMaximum, newCookieAverage));  // send arguments to constructor
+  clearTable = document.getElementById("shops");
+  // elem = clearTable.
+  // clearTable.parentNode.removeChild(clearTable);
 
-  shops.push(new Shop(newLocation, newMinimum, newMaximum, newCookieAverage));
   renderShops();
+  console.log(typeof clearTable);
 }
 
-
+// Event listener
+var el = document.getElementById('formButton');
+el.addEventListener('click', function(){newStore(this.form);}, false);
 
 
 
@@ -96,25 +103,50 @@ function newStore(form) {
 *************************** Create Table via DOM
 ***********************************************/
 
-// Add column headers
-var table = document.getElementById("shops");
-tableHeader = document.createElement("tr");
-tableHeaderCell = document.createElement("th");
-tableHeaderCell.innerText = "Location";
-tableHeader.appendChild(tableHeaderCell);
-for (var i = 0; i < hoursToCalculate; i++) {
-  getTimes();  // function call to get data for civilianTime and meridiem variables
-  tableHeaderCell = document.createElement("th");
-  tableHeaderCell.innerText = civilianTime + meridiem;
-  tableHeader.appendChild(tableHeaderCell);
-}
-tableHeaderCell = document.createElement("th");
-tableHeaderCell.innerText = "Total";
-tableHeader.appendChild(tableHeaderCell);
-table.appendChild(tableHeader);  // append accumulated <th> elements and text to the HTML <table>
+// Render default on page load
+renderShops();
 
-// Add locations and cookie counts
+// Customized render after form input
 function renderShops() {
+
+  // Clear table if run earlier
+  if (typeof clearTable !== "undefined") {
+    var list = document.getElementById("shops");
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+  }
+
+
+  // Add column headers
+  var table = document.getElementById("shops");
+  tableHeader = document.createElement("tr");
+  tableHeaderCell = document.createElement("th");
+  tableHeaderCell.innerText = "Location";
+  tableHeader.appendChild(tableHeaderCell);
+  for (var i = 0; i < hoursToCalculate; i++) {
+    // getTimes();  // function call to get data for civilianTime and meridiem variables
+    if (i + openingHour < 12) {
+       meridiem = 'am';
+       civilianTime = i + openingHour;
+    } else if (i + openingHour > 12) {
+       meridiem = 'pm';
+       civilianTime = i + openingHour - 12;
+    } else {
+       meridiem = 'pm';
+       civilianTime = i + openingHour;
+    }
+    tableHeaderCell = document.createElement("th");
+    tableHeaderCell.innerText = civilianTime + meridiem;
+    tableHeader.appendChild(tableHeaderCell);
+  }
+  tableHeaderCell = document.createElement("th");
+  tableHeaderCell.innerText = "Total";
+  tableHeader.appendChild(tableHeaderCell);
+  table.appendChild(tableHeader);  // append accumulated <th> elements and text to the HTML <table>
+
+
+  // Add locations and cookie counts
   for (var index = 0; index < shops.length; index++) {
     var cookieShop = shops[index];
     cookieShop.addCookiesPerHour();
